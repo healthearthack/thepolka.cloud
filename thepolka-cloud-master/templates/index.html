@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+<!-- Webpage tab block label -->
+{% block title %}Andy's | The Polkadot Cloud{% endblock %}
+<!-- Contents of the webpage -->
+<!-- Refers to the upper right quadrant of the screen. -->
+{% block content %}
+
+<!-- Main page content -->
+<section class="hero-section" id="welcome">
+
+    <h1>Welcome to the Polkadot Cloud</h1>
+
+    <p>
+        Thanks for stopping by. Browse software builds, educational material,
+        cloud-based services, and professional tools.
+    </p>
+
+    <p class="flagship">
+        Current flagship project:
+        <a href="https://resume-generator.thepolka.cloud/#resume">
+            Résumé Generator
+        </a>
+    </p>
+
+    <div class="hero-image">
+        <img
+            src="{{ url_for('static', filename='img/thepolka.cloud.png') }}"
+            alt="ThePolka.Cloud"
+            class="hero-graphic"
+        />
+    </div>
+
+</section>
+
+<section class="apps-library" id="apps" aria-labelledby="apps-title">
+    <div class="section-heading">
+        <p class="eyebrow">Apps Library</p>
+        <h2 id="apps-title">Tools that work where you work</h2>
+        <p>Install ThePolka browser tool without leaving your workflow.</p>
+    </div>
+
+    <article class="app-card extension-card">
+        <div class="app-card-topline">
+            <span class="app-badge">Browser tool</span>
+            <span class="app-status"><span class="status-light" aria-hidden="true"></span>Chrome extension</span>
+        </div>
+
+        <div class="app-icon" aria-hidden="true">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="4"></circle>
+                <path d="M21.17 8H12"></path>
+                <path d="m3.95 6.06 4.59 7.94"></path>
+                <path d="m10.88 21.94 4.58-7.94"></path>
+            </svg>
+        </div>
+
+        <div class="app-details">
+            <h3>ThePolka Chrome Extension</h3>
+            <p>Automate your workflow, track operational statistics, and streamline browser-based tasks.</p>
+        </div>
+
+        <div class="app-actions">
+            <a
+                href="https://chromewebstore.google.com/detail/enibnbffggiaglilabcmpldlmlalmigm"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+                aria-label="Add ThePolka Chrome Extension to Chrome (opens in a new tab)"
+            >Add to Chrome</a>
+
+            <details class="install-guide">
+                <summary>Manual install guide</summary>
+                <div class="guide-content">
+                    <h4>Developer Mode setup</h4>
+                    <ol>
+                        <li>Download and extract the extension ZIP file from its official release.</li>
+                        <li>Open <code>chrome://extensions</code> and enable <strong>Developer mode</strong>.</li>
+                        <li>Select <strong>Load unpacked</strong>, then choose the extracted folder containing <code>manifest.json</code>.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+    </article>
+
+    <article class="app-card ghost-card" aria-labelledby="ghost-card-title">
+        <div class="app-card-topline">
+            <span class="app-badge">Local automation</span>
+            <span class="app-status"><span class="status-light" aria-hidden="true"></span>Version 1.0.0</span>
+        </div>
+
+        <div class="app-icon ghost-icon" aria-hidden="true">👻</div>
+
+        <div class="app-details">
+            <h3 id="ghost-card-title">Ghost Agent</h3>
+            <p>Keep the Helm responsive while a local background worker creates safe, reviewable next-step branches.</p>
+        </div>
+
+        <div class="app-actions">
+            <a href="{{ url_for('ghost_agent') }}" class="btn btn-primary">See it work</a>
+            <a href="{{ url_for('static', filename='downloads/ghost-agent-v1.0.0-source.zip') }}"
+               class="btn btn-secondary" download>Download Ghost Agent</a>
+        </div>
+    </article>
+</section>
+
+{% endblock %}

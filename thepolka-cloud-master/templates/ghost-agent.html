@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block title %}Ghost Agent | The Polkadot Cloud{% endblock %}
+
+{% block content %}
+<article class="ghost-product" id="ghost-agent">
+  <header class="product-hero">
+    <div>
+      <p class="eyebrow">The Polkadot Cloud · Local automation</p>
+      <h1>Keep the Helm responsive.<br><span>Let the Ghost plan ahead.</span></h1>
+      <p class="product-lede">
+        Ghost Agent is a local CLI (command-line interface) with an immediate user lane
+        and a non-blocking background planning lane. You remain in control of every action.
+      </p>
+      <div class="product-actions">
+        <a class="btn btn-primary" href="{{ url_for('static', filename='downloads/ghost-agent-v1.0.0-source.zip') }}" download>Download version 1.0.0</a>
+        <a class="btn btn-secondary" href="#install">Installation guide</a>
+      </div>
+    </div>
+    <div class="product-mark" aria-hidden="true">👻</div>
+  </header>
+
+  <section class="product-metrics" aria-label="Product facts">
+    <div><strong>0</strong><span>runtime dependencies</span></div>
+    <div><strong>2</strong><span>coordinated lanes</span></div>
+    <div><strong>100%</strong><span>local ledger</span></div>
+  </section>
+
+  <section class="terminal-demo" id="demo" aria-labelledby="demo-title">
+    <div class="terminal-bar">
+      <div><span class="terminal-light"></span><span class="terminal-light"></span><span class="terminal-light"></span></div>
+      <span id="demo-title">Ghost Agent walkthrough</span>
+      <span class="demo-status" id="demo-status">Ready</span>
+    </div>
+    <div class="terminal-grid">
+      <div class="terminal-pane">
+        <p class="terminal-label">Primary Helm</p>
+        <div class="terminal-output" id="helm-output" aria-live="polite">
+          <p>Ghost Agent 1.0.0 — Helm ready</p>
+          <p>helm&gt; <span class="terminal-cursor">_</span></p>
+        </div>
+      </div>
+      <div class="terminal-pane terminal-shadow">
+        <p class="terminal-label">Ghost ledger</p>
+        <div class="terminal-output" id="ghost-output" aria-live="polite"><p>Waiting for a bounded local job...</p></div>
+      </div>
+    </div>
+    <div class="demo-controls">
+      <button class="btn btn-primary" type="button" id="run-demo">Run 2+2 walkthrough</button>
+      <button class="btn btn-secondary" type="button" id="reset-demo">Reset</button>
+    </div>
+  </section>
+
+  <section class="install-panel" id="install" aria-labelledby="install-title">
+    <p class="eyebrow">Windows 11 setup</p>
+    <h2 id="install-title">From download to working terminal</h2>
+    <ol class="install-steps">
+      <li><strong>Extract the ZIP file.</strong><span>Open the extracted <code>ghost-cli</code> folder.</span></li>
+      <li><strong>Open PowerShell.</strong><span>Right-click empty space and select Open in Terminal.</span></li>
+      <li><strong>Start Ghost Agent.</strong><code>Set-ExecutionPolicy -Scope Process Bypass<br>.\run.ps1</code></li>
+      <li><strong>Verify both lanes.</strong><code>2+2<br>:status<br>:wait<br>:tail 10</code></li>
+    </ol>
+  </section>
+
+  <section class="truth-panel">
+    <h2>Clear operating boundaries</h2>
+    <div class="truth-grid">
+      <div><h3>Implemented</h3><p>Safe arithmetic, ordered background planning, job status, graceful shutdown, and local logs.</p></div>
+      <div><h3>Deliberately excluded</h3><p>No shell execution, network requests, purchases, or fabricated image renders.</p></div>
+    </div>
+  </section>
+</article>
+{% endblock %}
+
+{% block extra_js %}<script src="{{ url_for('static', filename='js/ghost-agent-demo.js') }}"></script>{% endblock %}

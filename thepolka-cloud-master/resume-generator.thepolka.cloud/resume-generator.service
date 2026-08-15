@@ -1,0 +1,14 @@
+[Unit]
+Description=resume-generator.thepolka.cloud Flask app
+After=network.target
+
+[Service]
+Type=simple
+User=bball_1181
+WorkingDirectory=/home/bball_1181/thepolka.cloud/resume-generator.thepolka.cloud
+ExecStart=/home/bball_1181/thepolka.cloud/resume-generator.thepolka.cloud/.venv/bin/python app.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
