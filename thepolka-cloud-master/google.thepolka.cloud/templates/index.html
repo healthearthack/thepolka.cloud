@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Google Ecosystem Hub · thepolka.cloud</title>
+<style>
+:root{--b:#1a73e8;--r:#ea4335;--y:#fbbc04;--g:#34a853;--ink:#202124;--muted:#5f6368;--line:#e8eaed}
+*{box-sizing:border-box}body{margin:0;background:#f8fafd;color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial}
+a{color:inherit}.wrap{width:min(1180px,calc(100% - 32px));margin:auto}.top{height:5px;background:linear-gradient(90deg,var(--b) 0 25%,var(--r) 25% 50%,var(--y) 50% 75%,var(--g) 75%)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0}.brand{font-weight:800}.nav a{margin-left:18px;text-decoration:none;color:var(--muted)}
+.hero{padding:64px 0;display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}h1{font-size:clamp(42px,7vw,82px);line-height:.98;letter-spacing:-.055em;margin:0 0 18px}
+.lede{font-size:21px;color:var(--muted)}.quad{background:#fff;border:1px solid var(--line);border-radius:28px;padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.q{min-height:95px;border-radius:18px;padding:15px;color:#fff;font-weight:800;display:flex;align-items:end}.q:nth-child(1){background:var(--b)}.q:nth-child(2){background:var(--r)}.q:nth-child(3){background:var(--y);color:#333}.q:nth-child(4){background:var(--g)}
+section{padding:46px 0}h2{font-size:clamp(30px,4vw,48px);letter-spacing:-.04em;margin:0 0 8px}.sub{color:var(--muted);max-width:760px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:20px}
+.card,.prompt,.ticker{background:#fff;border:1px solid var(--line);border-radius:22px;padding:21px}.card h3,.prompt h3{margin:0 0 8px}.card p{color:var(--muted)}.card a{color:var(--b);font-weight:700;text-decoration:none}
+.prompts{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:20px}.tag{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--b);font-weight:800}.prompt pre{white-space:pre-wrap;background:#f8fafd;border-radius:14px;padding:15px;font:14px/1.55 ui-monospace,Consolas,monospace}
+button{border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 11px;font-weight:700;cursor:pointer}
+.gmail{background:#101114;color:#fff;border-radius:30px;padding:34px}.gmail .lede{color:#bdc1c6}.gmail-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:22px}.gbox{background:#202124;border:1px solid #3c4043;border-radius:18px;padding:20px}.gbox p{color:#bdc1c6}
+.note{margin-top:18px;background:#fff8d8;color:#493f00;border-left:4px solid var(--y);padding:13px 15px;border-radius:0 12px 12px 0}
+.ticker{padding:0;overflow:hidden}.ticker h3{padding:18px 20px;margin:0;border-bottom:1px solid var(--line)}#activity{list-style:none;padding:0;margin:0}#activity li{display:grid;grid-template-columns:34px 1fr auto;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line);align-items:center}.rank{width:30px;height:30px;border-radius:50%;background:#f1f3f4;display:grid;place-items:center;font-weight:800}.meta{font-size:12px;color:var(--muted)}
+footer{padding:50px 0 70px;color:var(--muted)}@media(max-width:800px){.hero,.gmail-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.prompts{grid-template-columns:1fr}}@media(max-width:560px){.cards{grid-template-columns:1fr}.nav{display:none}}
+</style>
+</head>
+<body><div class="top"></div>
+<header class="wrap"><nav><div class="brand">Google × thepolka.cloud</div><div class="nav"><a href="#accounts">Accounts</a><a href="#prompts">Prompts</a><a href="#gmail">G.M.A.I.L.</a><a href="#grow">#GrowWithGoogle</a></div></nav></header>
+<main>
+<section class="hero wrap"><div><h1>Your Google ecosystem, one launchpad.</h1><p class="lede">A personal operating surface for Google accounts, high-value prompts, Gmail agent workflows, and user-controlled Artificial Intelligence data participation.</p></div><div class="quad"><div class="q">Prompt</div><div class="q">Draft</div><div class="q">Review</div><div class="q">Grow</div></div></section>
+<section id="accounts" class="wrap"><h2>Google launchpad</h2><p class="sub">Links open Google's own services; this page does not store Google passwords or tokens.</p><div class="cards">
+{% for name,url,desc in links %}<article class="card"><h3>{{name}}</h3><p>{{desc}}</p><a href="{{url}}" target="_blank" rel="noopener">Open →</a></article>{% endfor %}
+</div></section>
+<section id="prompts" class="wrap"><h2>Prompt shelf</h2><p class="sub">Reusable prompt patterns for the Google ecosystem.</p><div class="prompts">
+{% for title,product,prompt in prompts %}<article class="prompt"><div class="tag">{{product}}</div><h3>{{title}}</h3><pre id="p{{loop.index}}">{{prompt}}</pre><button data-copy="p{{loop.index}}">Copy prompt</button></article>{% endfor %}
+</div></section>
+<section id="gmail" class="wrap"><div class="gmail"><div class="tag">Concept campaign</div><h2>G.M.A.I.L. = Google My Artificial Intelligence Language</h2><p class="lede">Email can contain rich personal language data. The proposal: if a user affirmatively elects to contribute derived language signals for Artificial Intelligence research, participation should be transparent, revocable, scoped, and potentially rewarded.</p>
+<div class="gmail-grid">
+<div class="gbox"><h3>Plugin 01 · Draft Agent</h3><p>Read permitted inbound email, prepare a response, save it to Drafts, and require a human to review and press Send.</p></div>
+<div class="gbox"><h3>Plugin 02 · Data Contribution Consent</h3><p>Proposed opt-in controls for categories, purpose, duration, exclusions, and one-click withdrawal.</p></div>
+<div class="gbox"><h3>Proposal · Credit for contribution</h3><p>Campaign concept: users who deliberately contribute eligible data could receive Google Artificial Intelligence credits or other benefits. This is not a current Google program.</p></div>
+<div class="gbox"><h3>Guardrails</h3><p>Exclude passwords, security codes, financial identifiers, sensitive records, private attachments, and third-party correspondence without an appropriate consent basis.</p></div>
+</div><div class="note">Google states that Workspace data is not used to train underlying generative Artificial Intelligence models without permission. This site proposes an explicit compensated opt-in model; it does not claim Google currently pays users for Gmail training data.</div>
+</div></section>
+<section id="grow" class="wrap"><h2>#GrowWithGoogle watch</h2><p class="sub">Best-effort public mentions from Google News RSS. This is not a comprehensive ranking of all internet or social activity.</p><div class="ticker"><h3>Top 5 public mentions</h3><ol id="activity"><li><span class="rank">•</span><span>Loading…</span></li></ol></div></section>
+</main>
+<footer class="wrap"><strong>google.thepolka.cloud</strong><br>Independent personal project. Google, Gmail, Gemini, and Grow with Google are trademarks of Google LLC. Not an official Google product.</footer>
+<script>
+document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=async()=>{await navigator.clipboard.writeText(document.getElementById(b.dataset.copy).innerText);b.textContent='Copied';setTimeout(()=>b.textContent='Copy prompt',1200)});
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+async function load(){const el=document.getElementById('activity');try{const d=await (await fetch('/api/activity')).json();if(!d.items.length)throw 0;el.innerHTML=d.items.map((x,i)=>`<li><span class="rank">${i+1}</span><span><strong>${esc(x.title)}</strong><br><span class="meta">${esc(x.source)}</span></span><a href="${x.url}" target="_blank" rel="noopener">Open ↗</a></li>`).join('')}catch(e){el.innerHTML='<li><span class="rank">!</span><span>Activity feed unavailable.</span></li>'}}load();setInterval(load,900000);
+</script>
+</body></html>
