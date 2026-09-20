@@ -5,7 +5,7 @@
     <link>https://go.thepolka.cloud</link>
     <description>Automated industrial research syndication, doctoral publications, .oil subsurface telemetry, and .h2o water sovereignty ledgers.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 20 Sep 2026 08:32:32 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 20 Sep 2026 08:42:58 GMT</lastBuildDate>
     <atom:link href="https://thepolka.cloud/feed.xml" rel="self" type="application/rss+xml" />
     <managingEditor>admin@thepolka.cloud (Andrew C. Kieckhefer)</managingEditor>
     <webMaster>admin@thepolka.cloud (healthearthack)</webMaster>
@@ -15,7 +15,7 @@
       <title>[MONOGRAPH] Thermodynamic Self-Sufficiency and Cyber-Physical Resiliency in Smackover DLE Repurposing</title>
       <link>https://doi.org/10.5281/zenodo.1089a34cc930</link>
       <description>Empirical proof that co-locating DLE with binary-cycle geothermal recovery in depleted petroleum wellbores produces +1.95 MWe of surplus electricity (EROI = 11.38), abates -14.82 kg CO2e/kg LCE, and defeats Modbus sensor spoofing via NIST SP 800-82 Navier-Stokes invariants.</description>
-      <pubDate>Sun, 20 Sep 2026 08:32:32 GMT</pubDate>
+      <pubDate>Sun, 20 Sep 2026 08:42:58 GMT</pubDate>
       <guid isPermaLink="true">https://doi.org/10.5281/zenodo.1089a34cc930</guid>
       <dc:creator>healthearthack</dc:creator>
       <dc:identifier>10.5281/zenodo.1089a34cc930</dc:identifier>
@@ -29,7 +29,7 @@
       <title>[INFRASTRUCTURE .OIL] Smackover Wellbore Telemetry Grid &amp; Mechanical Integrity Status</title>
       <link>https://go.thepolka.cloud/telemetry/oil</link>
       <description>Sovereign .oil domain registry mapping 3,200m wellbore depths across smackover.oil and wellbore.oil. Re-entry capital expenditure savings validated at $6,700,000.00 USD vs greenfield drilling.</description>
-      <pubDate>Sun, 20 Sep 2026 08:32:32 GMT</pubDate>
+      <pubDate>Sun, 20 Sep 2026 08:42:58 GMT</pubDate>
       <guid isPermaLink="true">https://go.thepolka.cloud/telemetry/oil#Sun, 20 Sep</guid>
       <dc:creator>healthearthack (.oil Registry)</dc:creator>
       <category>.oil Subsurface Infrastructure</category>
@@ -42,7 +42,7 @@
       <title>[WATER SOVEREIGNTY .H2O] Geothermal Freshwater Co-Generation: 1,277,500 Gallons/Year Distilled</title>
       <link>https://go.thepolka.cloud/telemetry/h2o</link>
       <description>Sovereign .h2o domain registry tracking thermal desorption steam condensate recovery at freshwater.h2o and waqf.h2o. Yields 3,500 gal/day WHO-potable drinking water for South Arkansas agricultural districts.</description>
-      <pubDate>Sun, 20 Sep 2026 08:32:32 GMT</pubDate>
+      <pubDate>Sun, 20 Sep 2026 08:42:58 GMT</pubDate>
       <guid isPermaLink="true">https://go.thepolka.cloud/telemetry/h2o#Sun, 20 Sep</guid>
       <dc:creator>Crescent &amp; Veteran Energy Alliance</dc:creator>
       <category>.h2o Water Sovereignty</category>
@@ -55,7 +55,7 @@
       <title>[CIVIC EQUITY] Crescent &amp; Veteran Energy Alliance: Anti-Islamophobia Charter &amp; Military Transition</title>
       <link>https://github.com/healthearthack/crescent-vets-energy-initiative</link>
       <description>Bridges 45 military veterans annually (+$70.8K wage uplift) into SCADA engineering while dedicating $3,160,000.00 USD/yr (2.5% Zakat pool) to public clean water trusts. Implements zero-tolerance anti-Islamophobia procurement standards.</description>
-      <pubDate>Sun, 20 Sep 2026 08:32:32 GMT</pubDate>
+      <pubDate>Sun, 20 Sep 2026 08:42:58 GMT</pubDate>
       <guid isPermaLink="true">https://github.com/healthearthack/crescent-vets-energy-initiative#Sun, 20 Sep</guid>
       <dc:creator>CVEA Public Benefit Trust</dc:creator>
       <category>Social Welfare</category>
@@ -69,7 +69,7 @@
       <title>[STATUTORY FINANCE] C# .NET Project Finance DCF: IRA 45X Monetization ($4.42M/yr) &amp; EU CRMA</title>
       <link>https://github.com/healthearthack/energy-law-governance</link>
       <description>Statutory audit confirming 100% domestic processing content under IRA Section 30D, $4,424,532.00 USD annual Section 45X production tax credit eligibility, Levelized Cost of Lithium of $3,842.15/MT, and 42.1% project IRR.</description>
-      <pubDate>Sun, 20 Sep 2026 08:32:32 GMT</pubDate>
+      <pubDate>Sun, 20 Sep 2026 08:42:58 GMT</pubDate>
       <guid isPermaLink="true">https://github.com/healthearthack/energy-law-governance#Sun, 20 Sep</guid>
       <dc:creator>Energy Governance Group</dc:creator>
       <category>Project Finance</category>
@@ -82,7 +82,7 @@
       <title>[REMOTE SENSING] Tri-Sensor Invariant Stream: NOAA KELD + NASA OCO-2 XCO2 + Google Earth Sentinel-2</title>
       <link>https://github.com/healthearthack/earth-atmospheric-telemetry</link>
       <description>Live atmospheric and land surface monitoring over the Smackover Basin: NASA XCO2 at 421.84 ppm, NOAA barometric pressure at 1014.20 hPa, and Google Earth Engine Sentinel-2 NDVI vegetative vigor at 0.742 (zero brine kill-zones).</description>
-      <pubDate>Sun, 20 Sep 2026 08:32:32 GMT</pubDate>
+      <pubDate>Sun, 20 Sep 2026 08:42:58 GMT</pubDate>
       <guid isPermaLink="true">https://github.com/healthearthack/earth-atmospheric-telemetry#Sun, 20 Sep</guid>
       <dc:creator>healthearthack (Earth Data Core)</dc:creator>
       <category>Remote Sensing</category>
