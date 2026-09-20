@@ -1,0 +1,55 @@
+{
+  "taproom_name": "Grow with Google Enterprise Brewhouse",
+  "portal_url": "https://go.thepolka.cloud/taproom.html",
+  "statute_governance": "Bavarian Landordnung 1516 & NIST SP 800-82 Rev 3",
+  "brews": [
+    {
+      "id": "pagerank-pilsner",
+      "name": "PageRank Pilsner",
+      "style": "Crispy German Lager",
+      "abv": "4.8%",
+      "ibu": 36,
+      "og": 1.046,
+      "ingredients": ["Reverse Osmosis Pure Water", "Pilsner Malted Barley", "Hallertau Mittelfrüh Hops", "German Lager Yeast"],
+      "reinheitsgebot_compliant": true,
+      "nist_cyber_hardened": true,
+      "description": "Straw-colored, cracker malt, sharp noble hop bite. Highly indexed with zero-latency quaffability."
+    },
+    {
+      "id": "404-yeast-not-found",
+      "name": "404: Yeast Not Found",
+      "style": "Spontaneous Driftless Farmhouse Saison",
+      "abv": "6.8%",
+      "ibu": 24,
+      "og": 1.058,
+      "ingredients": ["Artesian Spring Water", "Two-Row Malted Barley", "Malted Wheat", "Saaz Hops", "Wild Driftless Yeast"],
+      "reinheitsgebot_compliant": true,
+      "nist_cyber_hardened": true,
+      "description": "Rustic farmhouse funk, cracked white pepper, dry effervescence fermented with open-air ambient flora."
+    },
+    {
+      "id": "kernel-panic-dipa",
+      "name": "Kernel Panic Double IPA",
+      "style": "West Coast Double IPA",
+      "abv": "8.4%",
+      "ibu": 88,
+      "og": 1.078,
+      "ingredients": ["Mineralized Brewing Water", "Pale Two-Row Malt", "Carafa Malt", "Cryo-Citra Hops", "Centennial Hops", "California Ale Yeast"],
+      "reinheitsgebot_compliant": true,
+      "nist_cyber_hardened": true,
+      "description": "Resinous pine, candied tropical mango, and assertive alpha-acid punch designed to survive buffer overflows."
+    },
+    {
+      "id": "smackover-nitro-stout",
+      "name": "Smackover Nitro Stout",
+      "style": "Geothermal Imperial Stout",
+      "abv": "9.2%",
+      "ibu": 55,
+      "og": 1.092,
+      "ingredients": ["Subsurface Demineralized Water", "Roasted Barley", "Chocolate Malt", "Willamette Hops", "Irish Ale Yeast"],
+      "reinheitsgebot_compliant": true,
+      "nist_cyber_hardened": true,
+      "description": "Viscous as 3,200m Smackover formation crude with deep espresso crema and thermodynamic enthalpy."
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The Chilled Pour — Grow with Google Taproom Feed</title>
+    <link>https://go.thepolka.cloud/taproom.html</link>
+    <description>Continuous RSS feed of Google-engineered craft concoctions, 1516 Reinheitsgebot compliance certificates, and NIST SP 800-82 brewery OT/ICS cyber defense attestations.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 20 Sep 2026 13:07:00 GMT</lastBuildDate>
+    <atom:link href="https://thepolka.cloud/brew_feed.xml" rel="self" type="application/rss+xml" />
+
+    <item>
+      <title>🍺 [TAPROOM DISPATCH] PageRank Pilsner Tapped (4.8% ABV, 36 IBU)</title>
+      <link>https://go.thepolka.cloud/taproom.html#pagerank-pilsner</link>
+      <guid isPermaLink="false">thepolka-cloud-brew-pagerank-pilsner-20260920</guid>
+      <pubDate>Sun, 20 Sep 2026 12:00:00 GMT</pubDate>
+      <description><![CDATA[
+        <p><strong>Concoction:</strong> PageRank Pilsner</p>
+        <p><strong>Style:</strong> Crispy German Lager</p>
+        <p><strong>Statutory Purity:</strong> 100% Bavarian Landordnung 1516 Certified (Water, Malted Barley, Hallertau Hops, German Yeast).</p>
+        <p><strong>Cyber Hardening:</strong> NIST SP 800-82 Rev 3 Purdue L1/L2 Air-Gap verified. Zero unauthorized Modbus register tampering.</p>
+        <p>Zero latency, crisp cracker malt, sharp noble hop bite. Highly indexed and quaffable.</p>
+      ]]></description>
+    </item>
+
+    <item>
+      <title>🌾 [TAPROOM DISPATCH] 404: Yeast Not Found Poured (6.8% ABV, 24 IBU)</title>
+      <link>https://go.thepolka.cloud/taproom.html#404-yeast-not-found</link>
+      <guid isPermaLink="false">thepolka-cloud-brew-404-yeast-20260920</guid>
+      <pubDate>Sun, 20 Sep 2026 11:30:00 GMT</pubDate>
+      <description><![CDATA[
+        <p><strong>Concoction:</strong> 404: Yeast Not Found</p>
+        <p><strong>Style:</strong> Spontaneous Driftless Farmhouse Saison</p>
+        <p><strong>Statutory Purity:</strong> 100% Pure Malt &amp; Hops. Naturally inoculated with wild driftless airborne flora (Louis Pasteur 1857 Doctrine compliant).</p>
+        <p><strong>Cyber Hardening:</strong> NIST CSF 2.0 PROTECT &amp; DETECT verified. Fermentation cellar telemetry cryptographically signed.</p>
+        <p>Rustic farmhouse funk, cracked white pepper, champagne-like effervescence.</p>
+      ]]></description>
+    </item>
+
+    <item>
+      <title>🌿 [TAPROOM DISPATCH] Kernel Panic Double IPA Unleashed (8.4% ABV, 88 IBU)</title>
+      <link>https://go.thepolka.cloud/taproom.html#kernel-panic-dipa</link>
+      <guid isPermaLink="false">thepolka-cloud-brew-kernel-panic-20260920</guid>
+      <pubDate>Sun, 20 Sep 2026 10:45:00 GMT</pubDate>
+      <description><![CDATA[
+        <p><strong>Concoction:</strong> Kernel Panic Double IPA</p>
+        <p><strong>Style:</strong> West Coast Double IPA</p>
+        <p><strong>Statutory Purity:</strong> 100% Reinheitsgebot Certified. Zero corn syrup, zero artificial colorants.</p>
+        <p><strong>Cyber Hardening:</strong> NIST SP 800-82 SCADA Deep Packet Inspection (DPI) active. Modbus Function Code 16 restricted.</p>
+        <p>Resinous Oregon pine, candied tropical mango, heavy Cryo-Citra dry hopping.</p>
+      ]]></description>
+    </item>
+
+    <item>
+      <title>☕ [TAPROOM DISPATCH] Smackover Nitro Stout Poured (9.2% ABV, 55 IBU)</title>
+      <link>https://go.thepolka.cloud/taproom.html#smackover-nitro-stout</link>
+      <guid isPermaLink="false">thepolka-cloud-brew-smackover-nitro-20260920</guid>
+      <pubDate>Sun, 20 Sep 2026 09:15:00 GMT</pubDate>
+      <description><![CDATA[
+        <p><strong>Concoction:</strong> Smackover Nitro Stout</p>
+        <p><strong>Style:</strong> Deep Geothermal Imperial Stout</p>
+        <p><strong>Statutory Purity:</strong> 100% Pure Malted Grain, Hops, Yeast, Demineralized Water.</p>
+        <p><strong>Cyber Hardening:</strong> NIST CSF RECOVER: Immutable cold-vault golden ladder logic attested.</p>
+        <p>Dark as subsurface crude with roasted espresso crema and pure thermodynamic enthalpy.</p>
+      ]]></description>
+    </item>
+  </channel>
+</rss>

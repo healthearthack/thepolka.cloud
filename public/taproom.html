@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Chilled Pour — Grow with Google Brewery Arcade & NIST Cyber Defense</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍺</text></svg>">
+  <style>
+    :root {
+      --google-blue: #4285F4;
+      --google-red: #EA4335;
+      --google-yellow: #FBBC05;
+      --google-green: #34A853;
+      --bg-dark: #0b0f19;
+      --panel-bg: #141b2d;
+      --card-bg: #1b233a;
+      --text-light: #f8fafc;
+      --gold: #f59e0b;
+      --beer-amber: #f59e0b;
+      --beer-foam: #fef3c7;
+      --cyber-cyan: #06b6d4;
+      --cyber-green: #10b981;
+      --cyber-red: #ef4444;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 16px;
+      max-width: 880px;
+    }
+
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .google-dots {
+      display: inline-flex;
+      gap: 5px;
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .dot.blue { background: var(--google-blue); }
+    .dot.red { background: var(--google-red); }
+    .dot.yellow { background: var(--google-yellow); }
+    .dot.green { background: var(--google-green); }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+      background: linear-gradient(135deg, #fff 30%, var(--beer-amber) 70%, var(--cyber-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tagline {
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    /* Main Arcade Cabinet */
+    .arcade-cabinet {
+      background: var(--panel-bg);
+      border: 2px solid #263352;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.7), 0 0 60px rgba(6, 182, 212, 0.12);
+      width: 100%;
+      max-width: 880px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: relative;
+    }
+
+    /* Stage Navigation Tabs */
+    .stage-nav {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      background: rgba(0,0,0,0.35);
+      padding: 6px;
+      border-radius: 12px;
+    }
+
+    .stage-tab {
+      background: transparent;
+      border: none;
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 10px 4px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    .stage-tab.active {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .stage-tab.t1.active { border-bottom: 3px solid var(--google-blue); }
+    .stage-tab.t2.active { border-bottom: 3px solid var(--google-yellow); }
+    .stage-tab.t3.active { border-bottom: 3px solid var(--cyber-cyan); }
+    .stage-tab.t4.active { border-bottom: 3px solid var(--google-green); }
+    .stage-tab.t5.active { border-bottom: 3px solid var(--google-red); }
+
+    /* Interactive Game Viewports */
+    .game-screen {
+      min-height: 420px;
+      background: #090d16;
+      border: 1px solid #1e293b;
+      border-radius: 14px;
+      padding: 24px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      text-align: center;
+    }
+
+    .game-screen.active {
+      display: flex;
+    }
+
+    /* Stage 1: Recipe Selector */
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      width: 100%;
+      margin-top: 14px;
+    }
+
+    .recipe-card {
+      background: var(--card-bg);
+      border: 1px solid #283556;
+      border-radius: 12px;
+      padding: 14px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s ease;
+    }
+
+    .recipe-card:hover, .recipe-card.selected {
+      border-color: var(--gold);
+      background: #242f4c;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+
+    .recipe-card h3 { font-size: 15px; margin-bottom: 4px; color: #fff; }
+    .recipe-card p { font-size: 12px; color: #94a3b8; line-height: 1.4; }
+    .recipe-meta { display: flex; gap: 8px; margin-top: 8px; font-size: 11px; font-weight: 700; color: var(--gold); }
+
+    /* Stage 2: Kettle Mashing & Hop Drop Mini-Game */
+    .kettle-visual {
+      width: 200px;
+      height: 160px;
+      background: linear-gradient(180deg, #334155, #1e293b);
+      border-radius: 20px 20px 60px 60px;
+      border: 4px solid #475569;
+      position: relative;
+      overflow: hidden;
+      margin: 14px 0;
+      box-shadow: inset 0 -10px 20px rgba(0,0,0,0.5);
+    }
+
+    .kettle-liquid {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(180deg, #d97706, #78350f);
+      transition: height 0.4s ease;
+    }
+
+    .bubble {
+      position: absolute;
+      bottom: 0;
+      width: 10px;
+      height: 10px;
+      background: rgba(255,255,255,0.4);
+      border-radius: 50%;
+      animation: rise 2s infinite ease-in;
+    }
+    @keyframes rise {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-110px); opacity: 0; }
+    }
+
+    .timing-meter {
+      width: 100%;
+      max-width: 420px;
+      height: 24px;
+      background: #1e293b;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+      margin: 16px 0;
+      border: 1px solid #334155;
+    }
+
+    .timing-target {
+      position: absolute;
+      left: 45%;
+      width: 20%;
+      height: 100%;
+      background: rgba(52, 168, 83, 0.45);
+      border-left: 2px solid var(--google-green);
+      border-right: 2px solid var(--google-green);
+    }
+
+    .timing-needle {
+      position: absolute;
+      top: 0;
+      width: 6px;
+      height: 100%;
+      background: #fff;
+      border-radius: 3px;
+      box-shadow: 0 0 8px #fff;
+      animation: sweep 1.8s infinite alternate ease-in-out;
+    }
+    @keyframes sweep {
+      0% { left: 0%; }
+      100% { left: 98%; }
+    }
+
+    /* Stage 3: Cyber Security & NIST SP 800-82 ICS Defense Terminal */
+    .cyber-terminal {
+      width: 100%;
+      max-width: 720px;
+      background: #040810;
+      border: 1px solid var(--cyber-cyan);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: left;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 13px;
+      box-shadow: 0 0 25px rgba(6, 182, 212, 0.2);
+    }
+
+    .terminal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      color: var(--cyber-cyan);
+      font-weight: 700;
+    }
+
+    .alert-banner {
+      background: rgba(239, 68, 68, 0.15);
+      border-left: 4px solid var(--cyber-red);
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      border-radius: 4px;
+      color: #fca5a5;
+    }
+
+    .nist-action-card {
+      background: #0d1526;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .nist-action-card:hover {
+      border-color: var(--cyber-cyan);
+      background: #13203a;
+      transform: translateX(4px);
+    }
+
+    .nist-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-right: 6px;
+    }
+    .badge-identify { background: #3b82f6; color: #fff; }
+    .badge-protect { background: #10b981; color: #fff; }
+    .badge-detect { background: #f59e0b; color: #000; }
+    .badge-respond { background: #ef4444; color: #fff; }
+    .badge-recover { background: #8b5cf6; color: #fff; }
+
+    /* Stage 4: Interactive 45° Cold Pour Challenge */
+    .pour-stage-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    #pourCanvas {
+      background: #040810;
+      border-radius: 12px;
+      border: 1px solid #2d3748;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+      cursor: pointer;
+    }
+
+    .pour-controls {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, var(--gold), #d97706);
+      color: #000;
+      font-weight: 800;
+      font-size: 13px;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.4);
+    }
+    .btn:active { transform: translateY(0); }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.14);
+      box-shadow: none;
+    }
+
+    .btn-cyber {
+      background: linear-gradient(135deg, var(--cyber-cyan), #0284c7);
+      color: #fff;
+    }
+    .btn-cyber:hover {
+      box-shadow: 0 4px 14px rgba(6, 182, 212, 0.5);
+    }
+
+    /* Stage 5: Dual Certificate of Purity & Cyber Hardening */
+    .cert-frame {
+      border: 3px double var(--gold);
+      padding: 24px;
+      border-radius: 14px;
+      background: #111827;
+      max-width: 580px;
+      margin: 0 auto;
+      text-align: center;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.6);
+      position: relative;
+    }
+
+    .seal-row {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 12px;
+    }
+
+    .wax-seal {
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle, #b91c1c, #7f1d1d);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fef08a;
+      font-size: 20px;
+      font-weight: 900;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      border: 2px solid #991b1b;
+    }
+
+    .cyber-seal {
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle, #0891b2, #164e63);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #cffafe;
+      font-size: 20px;
+      font-weight: 900;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      border: 2px solid #06b6d4;
+    }
+
+    .cert-meta {
+      font-family: monospace;
+      font-size: 11px;
+      color: #94a3b8;
+      background: rgba(0,0,0,0.5);
+      padding: 10px;
+      border-radius: 6px;
+      margin: 12px 0;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    /* Modal for Cyber Playbook */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 16px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: #111827;
+      border: 2px solid var(--cyber-cyan);
+      border-radius: 16px;
+      max-width: 780px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 40px rgba(6, 182, 212, 0.25);
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      font-size: 24px;
+      color: #94a3b8;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    .modal-close:hover { color: #fff; }
+
+    .playbook-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .playbook-card {
+      background: #1a2234;
+      border: 1px solid #2d3748;
+      border-radius: 10px;
+      padding: 14px;
+      text-align: left;
+    }
+    .playbook-card h4 {
+      font-size: 14px;
+      color: var(--cyber-cyan);
+      margin-bottom: 6px;
+    }
+    .playbook-card p {
+      font-size: 12px;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+
+    /* Bottom Syndication Footer */
+    .live-rss-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.45);
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid #1e293b;
+      font-size: 13px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .rss-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ea580c;
+      color: #fff;
+      font-weight: 700;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 700px) {
+      .stage-nav { grid-template-columns: repeat(3, 1fr); }
+      .playbook-grid { grid-template-columns: 1fr; }
+      #pourCanvas { width: 100% !important; height: auto !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-pill">
+      <span class="google-dots">
+        <span class="dot blue"></span>
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </span>
+      <span>Grow with Google Enterprise Brewhouse</span>
+    </div>
+    <h1>The Chilled Pour</h1>
+    <p class="tagline">An interactive brewery simulation governed by the 1516 Reinheitsgebot & NIST SP 800-82 OT/ICS Cyber Framework.</p>
+  </header>
+
+  <main class="arcade-cabinet">
+
+    <!-- Progress Nav -->
+    <nav class="stage-nav">
+      <button class="stage-tab t1 active" onclick="switchStage(1)">1. Recipe</button>
+      <button class="stage-tab t2" onclick="switchStage(2)">2. Boil & Hop</button>
+      <button class="stage-tab t3" onclick="switchStage(3)">3. 🛡️ NIST ICS Cyber</button>
+      <button class="stage-tab t4" onclick="switchStage(4)">4. Cold Pour</button>
+      <button class="stage-tab t5" onclick="switchStage(5)">5. Dual Seal</button>
+    </nav>
+
+    <!-- Screen 1: Choose Recipe -->
+    <section class="game-screen active" id="stage1">
+      <h2>Step 1: Select Your Concoction</h2>
+      <p style="color:#94a3b8; font-size: 14px; margin-top: 4px;">Pick a Google-engineered craft recipe to brew on tap today.</p>
+      
+      <div class="recipe-grid">
+        <div class="recipe-card selected" onclick="selectRecipe('PageRank Pilsner', '4.8%', 36, 1.046, 'Crispy German Lager')">
+          <h3>🔵 PageRank Pilsner</h3>
+          <p>Straw-colored, cracker malt, Hallertau hop bite. Zero latency. Highly indexed.</p>
+          <div class="recipe-meta">4.8% ABV · 36 IBU · 100% Pure</div>
+        </div>
+
+        <div class="recipe-card" onclick="selectRecipe('404: Yeast Not Found', '6.8%', 24, 1.058, 'Spontaneous Saison')">
+          <h3>🟡 404: Yeast Not Found</h3>
+          <p>Rustic farmhouse funk, cracked pepper, champagne effervescence. Wild driftless yeast.</p>
+          <div class="recipe-meta">6.8% ABV · 24 IBU · Spontaneous</div>
+        </div>
+
+        <div class="recipe-card" onclick="selectRecipe('Kernel Panic Double IPA', '8.4%', 88, 1.078, 'West Coast DIPA')">
+          <h3>🟢 Kernel Panic DIPA</h3>
+          <p>Dank resin, candied mango, Cryo-Citra overload. Handles memory bus overflow.</p>
+          <div class="recipe-meta">8.4% ABV · 88 IBU · Heavy Hop</div>
+        </div>
+
+        <div class="recipe-card" onclick="selectRecipe('Smackover Nitro Stout', '9.2%', 55, 1.092, 'Deep Imperial Stout')">
+          <h3>🔴 Smackover Stout</h3>
+          <p>Dark as 3,200m crude oil, roasted espresso crema, pure geothermal enthalpy.</p>
+          <div class="recipe-meta">9.2% ABV · 55 IBU · Nitro Cascade</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 20px; display: flex; gap: 10px;">
+        <button class="btn" onclick="startBoilStage()">Start Boiling ➔</button>
+        <button class="btn btn-secondary" onclick="openPlaybook()">🛡️ NIST Cyber Playbook</button>
+      </div>
+    </section>
+
+    <!-- Screen 2: Kettle Boil & Hop Drop Timing Mini-Game -->
+    <section class="game-screen" id="stage2">
+      <h2 id="kettleTitle">Step 2: Mashing & Hop Timing</h2>
+      <p style="color:#94a3b8; font-size: 14px; margin-top: 4px;">Time your noble hop addition when the needle hits the target zone!</p>
+
+      <div class="kettle-visual">
+        <div class="kettle-liquid" id="kettleLiquid"></div>
+        <div class="bubble" style="left: 20%; animation-delay: 0.2s;"></div>
+        <div class="bubble" style="left: 50%; animation-delay: 0.7s;"></div>
+        <div class="bubble" style="left: 80%; animation-delay: 1.1s;"></div>
+      </div>
+
+      <div style="font-size: 14px; color: var(--gold); font-weight: 700;">Kettle Temp: <span id="kettleTemp">68.0</span>°C</div>
+
+      <div class="timing-meter">
+        <div class="timing-target"></div>
+        <div class="timing-needle" id="hopNeedle"></div>
+      </div>
+
+      <div style="display: flex; gap: 10px;">
+        <button class="btn" id="dropHopBtn" onclick="dropHops()">🌿 Drop Hops Now!</button>
+      </div>
+      <div id="hopResult" style="margin-top: 10px; font-weight: 700; font-size: 14px;"></div>
+    </section>
+
+    <!-- Screen 3: SCADA/OT ICS Cyber Defense (NIST SP 800-82 Challenge) -->
+    <section class="game-screen" id="stage3">
+      <h2>Step 3: Brewery OT/ICS Cyber Security Defense</h2>
+      <p style="color:#94a3b8; font-size: 13px; margin-bottom: 14px;">Apply NIST SP 800-82 Industrial Control System & NIST CSF 2.0 controls to safeguard the batch.</p>
+
+      <div class="cyber-terminal">
+        <div class="terminal-header">
+          <span>BREWERY SCADA IDS // PURDUE MODEL LEVEL 1/2</span>
+          <span style="color: var(--cyber-green);">● SENSORS ONLINE</span>
+        </div>
+
+        <div class="alert-banner" id="cyberAlertBanner">
+          <strong>🚨 CRITICAL OT ALERT [MODBUS/TCP 502]:</strong> Unauthorized register write detected! Rogue payload attempting to force mash tun heating element to 98°C to denature saccharification enzymes!
+        </div>
+
+        <div style="margin-bottom: 10px; color: #94a3b8; font-size: 12px;">
+          Select the appropriate NIST SP 800-82 / CSF defense control:
+        </div>
+
+        <div class="nist-action-card" onclick="selectCyberDefense(1)">
+          <span class="nist-badge badge-protect">NIST PROTECT (PR.AC-5)</span>
+          <strong>Purdue Model Demilitarized Zone & Deep Packet Inspection (DPI)</strong>
+          <p style="color:#94a3b8; font-size: 11px; margin-top: 4px;">Isolate PLC subnet from corporate IT, drop unauthorized Modbus Function Code 16, and lock setpoint at 68°C.</p>
+        </div>
+
+        <div class="nist-action-card" onclick="selectCyberDefense(2)">
+          <span class="nist-badge badge-respond">BAD PRACTICE</span>
+          <strong>Bypass Firewall & Route PLC Directly to Public Guest Wi-Fi</strong>
+          <p style="color:#94a3b8; font-size: 11px; margin-top: 4px;">Allow anyone in the taproom to remotely monitor heating element logs over plaintext telnet.</p>
+        </div>
+
+        <div class="nist-action-card" onclick="selectCyberDefense(3)">
+          <span class="nist-badge badge-recover">NIST RECOVER (RC.RP-1)</span>
+          <strong>Immutable Cold-Vault Ladder Logic & Cryptographic HMAC Verification</strong>
+          <p style="color:#94a3b8; font-size: 11px; margin-top: 4px;">Flash verified golden PLC logic from air-gapped cryptographic repository (NIST SP 800-193).</p>
+        </div>
+
+        <div id="cyberLog" style="margin-top: 12px; font-weight: 700; font-size: 12px; min-height: 24px;"></div>
+      </div>
+
+      <div style="margin-top: 16px; display: flex; gap: 10px;">
+        <button class="btn btn-cyber" id="proceedPourBtn" style="display: none;" onclick="switchStage(4)">Proceed to Cold Pour ➔</button>
+        <button class="btn btn-secondary" onclick="openPlaybook()">📖 View NIST Playbook</button>
+      </div>
+    </section>
+
+    <!-- Screen 4: The Interactive 45° Cold Pour Challenge -->
+    <section class="game-screen" id="stage4">
+      <div class="pour-stage-container">
+        <h2>Step 4: The Chilled Pour Simulator</h2>
+        <p style="color:#94a3b8; font-size: 13px; margin-bottom: 12px;">Hold "Pull Tap" to fill. Keep the glass tilted at 45° to avoid <strong>404 Foam Overflow</strong>!</p>
+
+        <canvas id="pourCanvas" width="340" height="340"></canvas>
+
+        <div class="pour-controls">
+          <button class="btn btn-secondary" id="tiltBtn" onmousedown="setTilt(true)" onmouseup="setTilt(false)" ontouchstart="setTilt(true)" ontouchend="setTilt(false)">📐 Tilt 45°</button>
+          <button class="btn" id="tapHandleBtn" onmousedown="startPour()" onmouseup="stopPour()" ontouchstart="startPour()" ontouchend="stopPour()">🍺 Pull Tap (Hold)</button>
+          <button class="btn btn-secondary" onclick="resetPour()">🔄 Reset</button>
+        </div>
+
+        <div style="margin-top: 12px; font-size: 13px; display: flex; gap: 20px;">
+          <span>Volume: <strong id="volPercent" style="color:var(--gold);">0%</strong></span>
+          <span>Foam: <strong id="foamPercent" style="color:#fef3c7;">0%</strong></span>
+          <span>Tilt: <strong id="tiltDisplay" style="color:var(--google-blue);">0° (Upright)</strong></span>
+        </div>
+        <div id="pourFeedback" style="margin-top: 8px; font-weight: 700; font-size: 14px; height: 20px;"></div>
+      </div>
+    </section>
+
+    <!-- Screen 5: Dual Reinheitsgebot & NIST Cyber Certificate -->
+    <section class="game-screen" id="stage5">
+      <div class="cert-frame">
+        <div class="seal-row">
+          <div class="wax-seal" title="1516 Bavarian Reinheitsgebot">1516</div>
+          <div class="cyber-seal" title="NIST SP 800-82 OT/ICS Hardened">800-82</div>
+        </div>
+        <h2 style="font-size: 18px; color: var(--gold); margin-bottom: 4px;">CERTIFICATE OF STATUTORY PURITY & OT CYBER HARDENING</h2>
+        <p style="font-size: 11px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px;">Ingolstadt 1516 · NIST SP 800-82 Rev 3 · Grow with Google</p>
+
+        <div style="margin: 14px 0; font-size: 15px; font-weight: 700;">
+          Batch: <span id="certRecipeName" style="color: #fff;">PageRank Pilsner</span>
+        </div>
+
+        <p style="font-size: 12px; color: #cbd5e1; line-height: 1.5; margin-bottom: 10px;">
+          This concoction is certified 100% compliant with the 1516 Bavarian Beer Purity Law (Water, Malted Barley, Hops, Yeast). All brewery SCADA and Modbus/TCP control systems have been hardened in accordance with <strong>NIST SP 800-82 Rev 3</strong> & <strong>NIST CSF 2.0</strong>.
+        </p>
+
+        <div class="cert-meta">
+          <strong>STATUTORY SEAL:</strong> <span id="certHash" style="color:var(--gold);">8f3b20c9a1084ef7...VERIFIED</span><br>
+          <strong>NIST ICS PROFILE:</strong> <span style="color:var(--cyber-cyan);">PURDUE L1/L2 AIR-GAP · ZERO-TRUST SCADA</span><br>
+          <strong>PURITY SCORE:</strong> <span style="color:var(--google-green); font-weight: 800;">100.0% PURE (0 ADULTERANTS)</span><br>
+          <strong>CYBER RESILIENCE:</strong> <span style="color:var(--cyber-green); font-weight: 800;">PASS (NIST SP 800-82 VERIFIED)</span>
+        </div>
+
+        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+          <a class="btn" href="https://thepolka.cloud/brew_feed.xml" target="_blank">📡 W3C RSS Feed</a>
+          <button class="btn btn-secondary" onclick="openPlaybook()">🛡️ Cyber Playbook</button>
+          <button class="btn btn-secondary" onclick="playAgain()">🍻 Brew Another</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Syndication Footer -->
+    <footer class="live-rss-footer">
+      <div>
+        <span>📡 Live Taproom Syndication:</span>
+        <strong style="color: var(--gold);">thepolka.cloud / The Chilled Pour</strong>
+      </div>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <button class="btn btn-secondary" style="padding: 4px 10px; font-size: 11px;" onclick="openPlaybook()">🛡️ NIST Playbook</button>
+        <a class="rss-pill" href="https://thepolka.cloud/brew_feed.xml" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27Zm0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93Z"/></svg>
+          RSS 2.0 FEED
+        </a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Interactive Modal: NIST Brewery Cyber Security Playbook -->
+  <div class="modal-overlay" id="playbookModal">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closePlaybook()">×</button>
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+        <span class="cyber-seal" style="width: 36px; height: 36px; font-size: 14px;">800</span>
+        <h3 style="color: var(--cyber-cyan); font-size: 20px;">Brewery OT/ICS Cyber Security & NIST SP 800-82 Playbook</h3>
+      </div>
+      <p style="color: #94a3b8; font-size: 13px; line-height: 1.5;">
+        Modern craft brewhouses rely on automated PLCs, Modbus/TCP networks, and SCADA telemetry to control mash temperatures, glycol jackets, and CIP cycles. A cyber compromise can spoil thousands of gallons or cause physical tank ruptures. Here is how NIST frameworks secure the brewery.
+      </p>
+
+      <div class="playbook-grid">
+        <div class="playbook-card">
+          <h4>1. Purdue Model Segmentation (NIST SP 800-82 §5.2)</h4>
+          <p>Strictly air-gap Level 0/1 field instrumentation (kettle sensors, VFD pumps) and Level 2 PLCs from Level 4/5 enterprise networks. No guest taproom Wi-Fi may ever route to Modbus port 502.</p>
+        </div>
+
+        <div class="playbook-card">
+          <h4>2. NIST CSF 2.0: IDENTIFY (ID.AM)</h4>
+          <p>Maintain an immutable inventory of all fermentation controllers, valve actuators, and SCADA HMIs. Identify cryptographic hashes of authorized brewing profiles before execution.</p>
+        </div>
+
+        <div class="playbook-card">
+          <h4>3. NIST CSF 2.0: PROTECT (PR.AC & PR.DS)</h4>
+          <p>Implement Deep Packet Inspection (DPI) for industrial protocols. Enforce role-based access control and cryptographically sign recipe files with SHA-256 HMACs to prevent setpoint tampering.</p>
+        </div>
+
+        <div class="playbook-card">
+          <h4>4. NIST CSF 2.0: DETECT (DE.CM)</h4>
+          <p>Continuous SCADA anomaly detection. Monitor temperature drift rates, pressure fluctuations, and unexpected Modbus write commands (Function Codes 06 & 16) in real-time.</p>
+        </div>
+
+        <div class="playbook-card">
+          <h4>5. NIST CSF 2.0: RESPOND (RS.RP)</h4>
+          <p>Physical emergency stops and isolated fail-safe valves override software commands. If SCADA telemetry drifts beyond safe brewing margins, automated relays isolate heating loops.</p>
+        </div>
+
+        <div class="playbook-card">
+          <h4>6. NIST CSF 2.0: RECOVER (RC.RP & NIST SP 800-193)</h4>
+          <p>Platform Firmware Resiliency: Maintain immutable offline backups of PLC ladder logic. Restore verified baseline configurations in minutes without paying ransomware or dumping wort.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 18px; text-align: center;">
+        <button class="btn btn-cyber" onclick="closePlaybook()">Got It! Return to Taproom</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- Audio Synthesis (No external MP3s needed) ---
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    
+    function playTone(freq, type, duration) {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playPourSound() {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const bufferSize = audioCtx.sampleRate * 0.1;
+      const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const output = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        output[i] = (Math.random() * 2 - 1) * 0.05;
+      }
+      const whiteNoise = audioCtx.createBufferSource();
+      whiteNoise.buffer = buffer;
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.value = 800;
+      whiteNoise.connect(filter);
+      filter.connect(audioCtx.destination);
+      whiteNoise.start();
+    }
+
+    // --- State Management ---
+    let currentStage = 1;
+    let selectedBeer = { name: "PageRank Pilsner", abv: "4.8%", ibu: 36, og: 1.046, style: "Crispy German Lager" };
+    let cyberDefended = false;
+    
+    function switchStage(stageNum) {
+      currentStage = stageNum;
+      document.querySelectorAll('.stage-tab').forEach((tab, i) => {
+        tab.classList.toggle('active', i + 1 === stageNum);
+      });
+      document.querySelectorAll('.game-screen').forEach((screen, i) => {
+        screen.classList.toggle('active', i + 1 === stageNum);
+      });
+      if (stageNum === 4) initPourCanvas();
+    }
+
+    function selectRecipe(name, abv, ibu, og, style) {
+      selectedBeer = { name, abv, ibu, og, style };
+      document.querySelectorAll('.recipe-card').forEach(card => {
+        card.classList.toggle('selected', card.innerText.includes(name));
+      });
+      playTone(440, 'sine', 0.1);
+    }
+
+    // --- Modal Helpers ---
+    function openPlaybook() {
+      document.getElementById('playbookModal').classList.add('active');
+    }
+    function closePlaybook() {
+      document.getElementById('playbookModal').classList.remove('active');
+    }
+
+    // --- Stage 2: Kettle Boil & Timing Mini-Game ---
+    let kettleInterval = null;
+    function startBoilStage() {
+      switchStage(2);
+      document.getElementById('kettleTitle').innerText = `Boiling ${selectedBeer.name}`;
+      let temp = 68.0;
+      document.getElementById('kettleLiquid').style.height = "70%";
+      document.getElementById('hopResult').innerText = "";
+      
+      clearInterval(kettleInterval);
+      kettleInterval = setInterval(() => {
+        if (temp < 100.0) {
+          temp += 1.2;
+          document.getElementById('kettleTemp').innerText = temp.toFixed(1);
+        }
+      }, 100);
+    }
+
+    function dropHops() {
+      const needle = document.getElementById('hopNeedle');
+      const needleLeft = parseFloat(window.getComputedStyle(needle).left);
+      const meterWidth = needle.parentElement.offsetWidth;
+      const pct = (needleLeft / meterWidth) * 100;
+
+      const resultEl = document.getElementById('hopResult');
+      if (pct >= 43 && pct <= 67) {
+        resultEl.style.color = "var(--google-green)";
+        resultEl.innerText = "🎯 PERFECT HOP ISOMERIZATION! Optimal IBU Balance! Proceeding to OT Security Scan...";
+        playTone(587.33, 'triangle', 0.2);
+        setTimeout(() => playTone(880, 'sine', 0.3), 150);
+        setTimeout(() => switchStage(3), 1300);
+      } else {
+        resultEl.style.color = "var(--google-yellow)";
+        resultEl.innerText = "⚠️ Slightly off target! Bittering adjusted. Proceeding to OT Security Scan...";
+        playTone(300, 'sawtooth', 0.2);
+        setTimeout(() => switchStage(3), 1300);
+      }
+    }
+
+    // --- Stage 3: Cyber Defense Selection ---
+    function selectCyberDefense(choice) {
+      const log = document.getElementById('cyberLog');
+      const proceedBtn = document.getElementById('proceedPourBtn');
+
+      if (choice === 1) {
+        log.style.color = "var(--cyber-green)";
+        log.innerHTML = "✅ [NIST SP 800-82 PR.AC-5]: Rogue Modbus packet dropped! Setpoint clamped at 68.0°C. Purdue Zone L1/L2 air-gap enforced!";
+        playTone(523.25, 'triangle', 0.15);
+        setTimeout(() => playTone(659.25, 'sine', 0.2), 150);
+        cyberDefended = true;
+        proceedBtn.style.display = "inline-flex";
+      } else if (choice === 2) {
+        log.style.color = "var(--cyber-red)";
+        log.innerHTML = "❌ CRITICAL FAILURE: Purdue Model violated! Rogue actor now has root access to mash heater! Temperature spiked!";
+        playTone(180, 'sawtooth', 0.3);
+      } else if (choice === 3) {
+        log.style.color = "var(--cyber-green)";
+        log.innerHTML = "✅ [NIST CSF RECOVER RC.RP-1]: Golden ladder logic flashed from immutable vault. Cryptographic SHA-256 HMAC verified!";
+        playTone(659.25, 'sine', 0.2);
+        cyberDefended = true;
+        proceedBtn.style.display = "inline-flex";
+      }
+    }
+
+    // --- Stage 4: The 45° Cold Pour Challenge ---
+    let canvas, ctx;
+    let beerVolume = 0;
+    let foamHeight = 0;
+    let isTilted = false;
+    let isPouring = false;
+    let pourTimer = null;
+
+    function initPourCanvas() {
+      canvas = document.getElementById('pourCanvas');
+      ctx = canvas.getContext('2d');
+      drawGlass();
+    }
+
+    function setTilt(tiltState) {
+      isTilted = tiltState;
+      document.getElementById('tiltDisplay').innerText = isTilted ? "45° (Optimal)" : "0° (Upright)";
+      document.getElementById('tiltDisplay').style.color = isTilted ? "var(--google-green)" : "var(--google-blue)";
+      playTone(350, 'sine', 0.05);
+      drawGlass();
+    }
+
+    function startPour() {
+      if (beerVolume + foamHeight >= 100) return;
+      isPouring = true;
+      pourTimer = setInterval(() => {
+        if (beerVolume + foamHeight < 100) {
+          playPourSound();
+          if (isTilted) {
+            beerVolume += 1.8;
+            foamHeight = Math.min(18, foamHeight + 0.3);
+          } else {
+            beerVolume += 0.8;
+            foamHeight += 2.8;
+          }
+          
+          document.getElementById('volPercent').innerText = `${Math.min(100, Math.round(beerVolume))}%`;
+          document.getElementById('foamPercent').innerText = `${Math.min(100, Math.round(foamHeight))}%`;
+          drawGlass();
+
+          if (beerVolume + foamHeight >= 95) {
+            stopPour();
+            evaluatePour();
+          }
+        } else {
+          stopPour();
+          evaluatePour();
+        }
+      }, 50);
+    }
+
+    function stopPour() {
+      isPouring = false;
+      clearInterval(pourTimer);
+    }
+
+    function resetPour() {
+      stopPour();
+      beerVolume = 0;
+      foamHeight = 0;
+      document.getElementById('volPercent').innerText = "0%";
+      document.getElementById('foamPercent').innerText = "0%";
+      document.getElementById('pourFeedback').innerText = "";
+      drawGlass();
+    }
+
+    function evaluatePour() {
+      const fb = document.getElementById('pourFeedback');
+      if (foamHeight > 35) {
+        fb.style.color = "var(--google-red)";
+        fb.innerText = "❌ 404 FOAM OVERFLOW! Too much head, not enough tilt!";
+        playTone(180, 'sawtooth', 0.4);
+      } else if (beerVolume >= 75 && foamHeight >= 10 && foamHeight <= 24) {
+        fb.style.color = "var(--google-green)";
+        fb.innerText = "🏆 MASTER POUR! Crisp body, perfect 2-finger foam head!";
+        playTone(523.25, 'sine', 0.15);
+        setTimeout(() => playTone(659.25, 'sine', 0.15), 150);
+        setTimeout(() => playTone(783.99, 'sine', 0.3), 300);
+        setTimeout(() => {
+          document.getElementById('certRecipeName').innerText = selectedBeer.name;
+          document.getElementById('certHash').innerText = Array.from(crypto.getRandomValues(new Uint8Array(16))).map(b => b.toString(16).padStart(2,'0')).join('');
+          switchStage(5);
+        }, 1500);
+      } else {
+        fb.style.color = "var(--google-yellow)";
+        fb.innerText = "Decent pour, but a bit flat! Try again for perfection!";
+      }
+    }
+
+    function drawGlass() {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      ctx.save();
+      ctx.translate(canvas.width / 2, canvas.height / 2 + 25);
+      
+      if (isTilted) {
+        ctx.rotate(-0.35);
+      }
+
+      // Draw Glass Outline
+      const gx = -55, gy = -120, gw = 110, gh = 180;
+      ctx.strokeStyle = "rgba(255,255,255,0.75)";
+      ctx.lineWidth = 4;
+      ctx.strokeRect(gx, gy, gw, gh);
+
+      // Glass Base
+      ctx.fillStyle = "rgba(255,255,255,0.3)";
+      ctx.fillRect(gx - 8, gy + gh, gw + 16, 12);
+
+      // Draw Beer Liquid
+      const fillHeight = (beerVolume / 100) * (gh - 10);
+      const foamDrawHeight = (foamHeight / 100) * (gh - 10);
+
+      if (beerVolume > 0) {
+        ctx.fillStyle = "rgba(245, 158, 11, 0.9)";
+        ctx.fillRect(gx + 4, (gy + gh) - fillHeight, gw - 8, fillHeight);
+      }
+
+      // Draw Foam Head
+      if (foamHeight > 0) {
+        ctx.fillStyle = "rgba(254, 243, 199, 0.95)";
+        ctx.fillRect(gx + 4, (gy + gh) - fillHeight - foamDrawHeight, gw - 8, foamDrawHeight);
+      }
+
+      ctx.restore();
+
+      // Pouring Stream
+      if (isPouring) {
+        ctx.fillStyle = "rgba(245, 158, 11, 0.85)";
+        ctx.fillRect(canvas.width / 2 - 4, 10, 8, 120);
+      }
+    }
+
+    function playAgain() {
+      resetPour();
+      cyberDefended = false;
+      document.getElementById('cyberLog').innerText = "";
+      document.getElementById('proceedPourBtn').style.display = "none";
+      switchStage(1);
+    }
+
+    // Keyboard shortcuts
+    window.addEventListener('keydown', (e) => {
+      if (currentStage === 4) {
+        if (e.code === 'Space' && !isPouring) startPour();
+        if (e.key === 'ArrowLeft' || e.key === 'KeyA') setTilt(true);
+      }
+    });
+
+    window.addEventListener('keyup', (e) => {
+      if (currentStage === 4) {
+        if (e.code === 'Space') stopPour();
+        if (e.key === 'ArrowLeft' || e.key === 'KeyA') setTilt(false);
+      }
+    });
+  </script>
+</body>
+</html>
