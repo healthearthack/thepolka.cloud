@@ -24,8 +24,17 @@ if sys.stdout and hasattr(sys.stdout, "reconfigure"):
 
 def generate_rss_feed():
     pub_date = datetime.datetime.now(datetime.timezone.utc).strftime("%a, %d %b %Y %H:%M:%S GMT")
-    doi = "10.5281/zenodo.1089a34cc930"
+    meta_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "industrial-research-publisher", "publications", "latest_monograph_metadata.json"))
+    doi = "10.5281/zenodo.22857254"
     doi_url = f"https://doi.org/{doi}"
+    if os.path.exists(meta_path):
+        try:
+            with open(meta_path, "r", encoding="utf-8") as fp:
+                meta = json.load(fp)
+                doi = meta.get("doi", doi)
+                doi_url = meta.get("doi_url", doi_url)
+        except Exception:
+            pass
 
     rss_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
