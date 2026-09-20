@@ -1,0 +1,52 @@
+name: Syndicate Research Monograph RSS & Deploy Portal
+
+on:
+  repository_dispatch:
+    types: [publish_dossier]
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'feed.xml'
+      - 'update_feed.py'
+      - 'public/**'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  syndicate-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Regenerate RSS 2.0 Feed
+        run: |
+          python update_feed.py
+
+      - name: Commit Feed Updates
+        run: |
+          git config user.name "healthearthack-ci"
+          git config user.email "ci@thepolka.cloud"
+          git add feed.xml
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore(feed): syndicate newly minted doctoral DOI [skip ci]" && git push)
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './public'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

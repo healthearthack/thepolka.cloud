@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "thepolka-cloud"
+version = "2.4.0"
+description = "Public Web Portal, Google City Cloud 3D Engine & W3C RSS 2.0 Syndication Hub"
+readme = "README.md"
+authors = [{ name = "Doctoral Candidate healthearthack", email = "admin@thepolka.cloud" }]
+license = { text = "MIT" }
+dependencies = []

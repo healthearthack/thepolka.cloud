@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>thepolka.cloud — Industrial Cyber-Physical Energy Research</title>
+    <link>https://thepolka.cloud</link>
+    <description>Automated industrial research monographs, doctoral publications, and permanent citable DOIs covering Smackover DLE thermodynamics, OT security, and clean energy law.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 20 Sep 2026 06:41:35 GMT</lastBuildDate>
+    <atom:link href="https://thepolka.cloud/feed.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>admin@thepolka.cloud (healthearthack)</managingEditor>
+    <webMaster>admin@thepolka.cloud (healthearthack)</webMaster>
+    <item>
+      <title>Thermodynamic Self-Sufficiency and Cyber-Physical Resiliency in Smackover DLE Repurposing</title>
+      <link>https://doi.org/10.5281/zenodo.1089a34cc930</link>
+      <description>We empirically demonstrate that co-locating Direct Lithium Extraction (DLE) with binary-cycle Organic Rankine Cycle geothermal recovery within depleted Smackover petroleum wellbores produces 1.949 MWe of surplus electrical power (EROI = 11.38) and achieves a net-negative lifecycle carbon delta of -14.82 kg CO2e/kg LCE. Downhole multiphase hydraulics are secured via NIST SP 800-82 Rev. 3 Navier-Stokes invariants precluding Modbus sensor spoofing. Statutory evaluation under IRA Section 45X confirms $4,424,532.00 USD annual production credits, while an algorithmic Waqf civic trust dedicates $3,160,000.00 USD annually to regional clean water distillation and veteran transition.</description>
+      <pubDate>Sun, 20 Sep 2026 06:41:35 GMT</pubDate>
+      <guid isPermaLink="true">https://doi.org/10.5281/zenodo.1089a34cc930</guid>
+      <dc:creator>healthearthack</dc:creator>
+      <dc:identifier>10.5281/zenodo.1089a34cc930</dc:identifier>
+      <category>Energy Transition</category>
+      <category>Direct Lithium Extraction</category>
+      <category>Cyber-Physical Security</category>
+    </item>
+  </channel>
+</rss>

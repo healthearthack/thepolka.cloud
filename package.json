@@ -1,0 +1,20 @@
+{
+  "name": "thepolka-cloud",
+  "version": "2.4.0",
+  "description": "Express TypeScript server for thepolka.cloud and W3C RSS 2.0 Syndication",
+  "main": "dist/server.js",
+  "types": "dist/feed_types.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.0",
+    "typescript": "^5.4.0"
+  },
+  "license": "MIT"
+}
